@@ -40,6 +40,7 @@ public class CatererService {
     }
 
     public Caterer createCaterer(Caterer caterer) {
+        // Set specialization here if needed
         return catererRepository.save(caterer);
     }
 

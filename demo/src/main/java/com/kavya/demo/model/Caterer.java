@@ -19,12 +19,13 @@ public class Caterer {
     private String phoneNumber;
     private String password;
     private String token; // Added token field
+    private String specialization; // Added specialization field
 
     // Constructors
     public Caterer() {
     }
 
-    public Caterer(Long id, String fullName, String email, String address, String phoneNumber, String password, String token) {
+    public Caterer(Long id, String fullName, String email, String address, String phoneNumber, String password, String token, String specialization) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
@@ -32,6 +33,7 @@ public class Caterer {
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.token = token;
+        this.specialization = specialization;
     }
 
     // Getters and Setters
@@ -91,6 +93,14 @@ public class Caterer {
         this.token = token;
     }
 
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
     // toString() method
     @Override
     public String toString() {
@@ -102,6 +112,7 @@ public class Caterer {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", password='" + password + '\'' +
                 ", token='" + token + '\'' +
+                ", specialization='" + specialization + '\'' +
                 '}';
     }
 }

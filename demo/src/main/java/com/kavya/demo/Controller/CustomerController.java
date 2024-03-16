@@ -70,4 +70,9 @@ public class CustomerController {
         session.invalidate();
         return "redirect:/login";
     }
+
+    @GetMapping("/ourServices")
+    public String exploreServices() {
+        return "customer_service"; // This will redirect to customerservice.html
+    }
 }
