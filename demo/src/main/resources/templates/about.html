@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Overview</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+      }
+      .main-header {
+        background-color: #333;
+        color: #fff;
+        padding-top: 30px;
+        min-height: 70px;
+        border-bottom: #bbb 1px solid;
+      }
+      .main-header h1 {
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      .main-content {
+        padding: 20px;
+        background: #fff;
+        margin-top: 20px;
+      }
+      .main-content h2 {
+        color: #333;
+      }
+      .team-members {
+        margin-top: 20px;
+        background: #e2e2e2;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .team-member {
+        background: #dcdcdc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+      .team-member:last-child {
+        margin-bottom: 0;
+      }
+
+      .back-to-dashboard {
+        background-color: #4caf50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition-duration: 0.4s;
+      }
+
+      .back-to-dashboard:hover {
+        background-color: #45a049; /* Darker Green */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>Project and Team Overview</h1>
+    </header>
+    <div class="container">
+      <section class="main-content">
+        <h2>Project Description</h2>
+        <p>
+          This project aims to create an innovative solution to streamline
+          business processes and improve productivity. Our approach leverages
+          the latest technology to ensure efficiency and user satisfaction. We
+          are committed to delivering a high-quality product that meets the
+          needs of our stakeholders and exceeds their expectations.<br />
+          Our platform facilitates registration for both customers and caterers.
+          Customers can place orders by specifying their preferred dishes,
+          selecting a caterer, and indicating the delivery details along with
+          the number of servings required. After submission, the caterer
+          evaluates the order history to determine the price, which the customer
+          then pays.
+        </p>
+      </section>
+      <section class="team-members">
+        <h2>Our Team</h2>
+        <div class="team-member">
+          <h3>Karthik Kavathekar</h3>
+        </div>
+        <div class="team-member">
+          <h3>Kavya Ramachandraiah</h3>
+        </div>
+        <div class="team-member">
+          <h3>Gollapudi Venkat Charan</h3>
+        </div>
+        <div class="team-member">
+          <h3>Mohammed Fuad</h3>
+        </div>
+      </section>
+      <div>
+        <a href="customer_welcome"
+          ><button class="back-to-dashboard">Back to dashboard</button></a
+        >
+      </div>
+    </div>
+  </body>
+</html>

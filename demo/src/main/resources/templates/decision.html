@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Cloud Kitchen</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("https://source.unsplash.com/1600x900/?restaurant");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #ffffff;
+      }
+      .container {
+        margin-top: 100px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 100px;
+      }
+
+      .btn {
+        margin: 20px;
+        padding: 10px 50px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Cloud Kitchen</h1>
+      <p>Choose your path:</p>
+      <a th:href="@{/login}" class="btn btn-primary">Are you a user?</a>
+      <a th:href="@{/caterer_login}" class="btn btn-secondary"
+        >Are you a caterer?</a
+      >
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
