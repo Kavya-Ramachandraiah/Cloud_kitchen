@@ -24,18 +24,6 @@
         margin-top: 100px;
         text-align: center;
       }
-      @keyframes bottomToTop {
-        from {
-          transform: translateY(
-            100px
-          ); /* Start from below the original position */
-          opacity: 0; /* Start with the text being invisible */
-        }
-        to {
-          transform: translateY(0); /* End at the original position */
-          opacity: 1; /* End with the text fully visible */
-        }
-      }
 
       h1 {
         animation: bottomToTop 2s ease-out forwards; /* Apply the animation */
@@ -76,11 +64,39 @@
         background-color: #6c757d;
         border-color: #6c757d;
       }
+
+      .typing {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 0.15em solid orange; /* Simulates the cursor */
+        animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
+        /* Adjust the total time and steps based on the length of your text */
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: orange;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to Cloud Kitchen</h1>
+      <h1><span class="typing">Welcome to Cloud Kitchen</span></h1>
       <p>Choose your path:</p>
       <a th:href="@{/login}" class="btn btn-primary">Are you a user?</a>
       <a th:href="@{/caterer_login}" class="btn btn-secondary"
