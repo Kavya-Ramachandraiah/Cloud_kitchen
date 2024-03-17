@@ -75,4 +75,6 @@ public class CustomerController {
     public String exploreServices() {
         return "customer_service"; // This will redirect to customerservice.html
     }
+
+    
 }

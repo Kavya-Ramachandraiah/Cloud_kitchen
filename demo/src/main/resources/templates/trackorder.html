@@ -1,111 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track Order</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f3ee; /* Light beige background */
-        padding: 20px;
-        color: #2b2d42; /* Dark text for better readability */
-      }
-      h1 {
-        text-align: center;
-      }
-      p,
-      span {
-        margin-top: 25px;
-      }
-      .order-container {
-        background-color: #ffffff;
-        width: 700px;
-        margin: auto;
-        padding: 20px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-      .order-header {
-        font-size: 24px;
-        margin-bottom: 10px;
-        color: #9bc1bc; /* Soft green for headers */
-      }
-      .order-details {
-        margin-bottom: 15px;
-      }
-      .total-price {
-        font-weight: bold;
-        font-size: 20px;
-        margin-top: 10px;
-        color: #9bc1bc; /* Soft green for price */
-      }
-      .make-payment-btn {
-        display: block;
-        width: 50%;
-        margin: auto;
-        padding: 10px;
-        background-color: #ff6b35; /* Bright orange for button */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        font-size: 18px;
-        margin-top: 50px;
-      }
-      .make-payment-btn:hover {
-        background-color: #e65e00; /* Darker shade of orange for hover effect */
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Order Tracking</h1>
-    <!-- Dynamically list orders -->
-    <div th:each="order : ${orders}">
-      <div class="order-container">
-        <div class="order-header">
-          Order #<span th:text="${order.id}"></span>
-        </div>
-        <div class="order-details">
-          <p>Order List: <span id="dishList" th:text="${dish.list}"></span></p>
-          <p>
-            Order Date:
-            <span
-              id="deliveryDate"
-              th:text="${#dates.format(order.date, 'dd-MM-yyyy')}"
-            ></span>
-          </p>
-          <p>
-            Number of People:
-            <span id="numberOfPeople" th:text="${order.numberOfPeople}"></span>
-          </p>
-
-          <p>Total Price: <span th:text="${order.totalPrice}"></span></p>
-        </div>
-        <a href="@{/makePayment}" class="make-payment-btn">Make Payment</a>
-      </div>
+    <!-- Add any CSS styles here -->
+</head>
+<body>
+    <h2>Track Order</h2>
+    <div id="orderList">
+        <!-- Orders will be displayed here -->
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Retrieve the stored values
-        const dishName = localStorage.getItem("orderDishName");
-        const deliveryDate = localStorage.getItem("orderDeliveryDate");
-        const numberOfPeople = localStorage.getItem("orderNumberOfPeople");
-        const catererText = localStorage.getItem("orderCatererText");
 
-        // Display the retrieved values
-        document.getElementById("dishList").innerHTML = dishName
-          .split(",")
-          .map((dish) => `<li>${dish.trim()}</li>`)
-          .join("");
-        document.getElementById("deliveryDate").textContent = deliveryDate;
-        document.getElementById("numberOfPeople").textContent = numberOfPeople;
-        document.getElementById("selectedCaterer").textContent = catererText;
-        // Note: Update the 'id' attributes in the HTML to match these if necessary
-      });
+    <script>
+        // Function to display the latest order
+        function displayLatestOrder() {
+            // Retrieve the latest order from local storage
+            var order = JSON.parse(localStorage.getItem("order"));
+
+            // Get the order list element
+            var orderList = document.getElementById("orderList");
+
+            // Clear existing orders
+            orderList.innerHTML = "";
+
+            // Display the latest order
+            if (order) {
+                var listItem = document.createElement("div");
+                listItem.innerHTML = `
+                    <h3>Order</h3>
+                    <p><strong>Dish Name:</strong> ${order.dishName}</p>
+                    <p><strong>Delivery Date:</strong> ${order.deliveryDate}</p>
+                    <p><strong>Number of People:</strong> ${order.numberOfPeople}</p>
+                    <p><strong>Caterer:</strong> ${order.catererText}</p>
+                    <hr>
+                `;
+                orderList.appendChild(listItem);
+            } 
+            // else {
+            //     // If no order exists, display a message
+            //     orderList.innerHTML = "<p>No order found.</p>";
+            // }
+        }
+
+        // Call the displayLatestOrder function when the page loads
+        window.addEventListener("load", function () {
+            displayLatestOrder();
+        });
     </script>
-  </body>
+</body>
 </html>

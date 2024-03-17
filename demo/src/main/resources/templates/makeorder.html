@@ -99,104 +99,88 @@
   <body>
     <h2 class="header-top">Make Order</h2>
     <div class="container">
-      <div class="input-section">
-        <form
-          action="#"
-          th:action="@{/saveOrder}"
-          th:object="${order}"
-          method="post"
-        >
-          <div>
-            <label for="dishName">Dish Name:</label>
-            <input
-              type="text"
-              id="dishNameInput"
-              name="dishName"
-              required
-              oninput="updateDishList()"
-            />
-          </div>
-          <div>
-            <label for="deliveryDate">Delivery Date:</label>
-            <input type="date" id="deliveryDate" name="deliveryDate" required />
-          </div>
-          <div>
-            <label for="numberOfPeople">Number of People:</label>
-            <input
-              type="number"
-              id="numberOfPeople"
-              name="numberOfPeople"
-              required
-            />
-          </div>
-          <div>
-            <label for="caterer">Select Caterer:</label>
-            <select id="caterer" name="catererId" required>
-              <option value="">Select Caterer</option>
-              <!-- Iterate over the list of caterers fetched from the backend -->
-              <th:block th:each="caterer : ${catererList}">
-                <!-- Display ID, full name, and specialization -->
-                <option
-                  th:value="${caterer.id}"
-                  th:text="${caterer.id + ' - ' + caterer.fullName + ' (' + caterer.specialization + ')'}"
-                ></option>
-              </th:block>
-            </select>
-          </div>
-          <a href=""><button class="btn" type="submit">Submit</button></a>
-        </form>
-      </div>
+        <div class="input-section">
+            <form action="#" th:action="@{/saveOrder}" th:object="${order}" method="post">
+                <div>
+                    <label for="dishName">Dish Name:</label>
+                    <input type="text" id="dishNameInput" name="dishName" required oninput="updateDishList()" />
+                </div>
+                <div>
+                    <label for="deliveryDate">Delivery Date:</label>
+                    <input type="date" id="deliveryDate" name="deliveryDate" required />
+                </div>
+                <div>
+                    <label for="numberOfPeople">Number of People:</label>
+                    <input type="number" id="numberOfPeople" name="numberOfPeople" required />
+                </div>
+                <div>
+                    <label for="caterer">Select Caterer:</label>
+                    <select id="caterer" name="catererId" required>
+                        <option value="">Select Caterer</option>
+                        <!-- Iterate over the list of caterers fetched from the backend -->
+                        <th:block th:each="caterer : ${catererList}">
+                            <!-- Display ID, full name, and specialization -->
+                            <option th:value="${caterer.id}"
+                                    th:text="${caterer.id + ' - ' + caterer.fullName + ' (' + caterer.specialization + ')'}">
+                            </option>
+                        </th:block>
+                    </select>
+                </div>
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
 
-      <div class="list-section">
-        <h3>Selected Dishes:</h3>
-        <ul id="dishList"></ul>
-      </div>
+        <div class="list-section">
+            <h3>Selected Dishes:</h3>
+            <ul id="dishList"></ul>
+        </div>
     </div>
 
     <script>
-      function updateDishList() {
-        var dishInput = document.getElementById("dishNameInput");
-        var dishList = document.getElementById("dishList");
-        // Clear existing list
-        dishList.innerHTML = "";
-        // Split input value by comma and iterate through each dish
-        var dishes = dishInput.value.split(",");
-        for (var i = 0; i < dishes.length; i++) {
-          // Create list item for each dish and append to the list
-          var listItem = document.createElement("li");
-          listItem.textContent = dishes[i].trim(); // Trim whitespace
-          dishList.appendChild(listItem);
-        }
-      }
+    function updateDishList() {
+    var dishInput = document.getElementById("dishNameInput");
+    var dishList = document.getElementById("dishList");
+    // Clear existing list
+    dishList.innerHTML = "";
+    // Split input value by comma and iterate through each dish
+    var dishes = dishInput.value.split(",");
+    for (var i = 0; i < dishes.length; i++) {
+        // Create list item for each dish and append to the list
+        var listItem = document.createElement("li");
+        listItem.textContent = dishes[i].trim(); // Trim whitespace
+        dishList.appendChild(listItem);
+    }
+}
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const orderForm = document.querySelector("form");
+function submitForm() {
+        // Capture the input values
+        const dishName = document.getElementById("dishNameInput").value;
+        const deliveryDate = document.getElementById("deliveryDate").value;
+        const numberOfPeople = document.getElementById("numberOfPeople").value;
+        const catererId = document.getElementById("caterer").value;
+        const catererText = document.getElementById("caterer").options[document.getElementById("caterer").selectedIndex].text;
 
-        orderForm.addEventListener("submit", function (e) {
-          e.preventDefault(); // Prevent the actual form submission
+        // Create a new order object
+        const order = {
+            dishName: dishName,
+            deliveryDate: deliveryDate,
+            numberOfPeople: numberOfPeople,
+            catererText: catererText
+        };
 
-          // Capture the input values
-          const dishName = document.getElementById("dishNameInput").value;
-          const deliveryDate = document.getElementById("deliveryDate").value;
-          const numberOfPeople =
-            document.getElementById("numberOfPeople").value;
-          const catererId = document.getElementById("caterer").value;
-          const catererText =
-            document.getElementById("caterer").options[
-              document.getElementById("caterer").selectedIndex
-            ].text;
+        // Clear old order data from local storage
+        localStorage.removeItem("order");
 
-          // Store the captured values
-          localStorage.setItem("orderDishName", dishName);
-          localStorage.setItem("orderDeliveryDate", deliveryDate);
-          localStorage.setItem("orderNumberOfPeople", numberOfPeople);
-          localStorage.setItem("orderCatererId", catererId);
-          localStorage.setItem("orderCatererText", catererText);
+        // Store the new order in local storage
+        localStorage.setItem("order", JSON.stringify(order));
 
-          // Optionally, redirect to the track order page or show a success message
-          window.location.href = "trackorder.html"; // Adjust the URL as needed
-        });
-      });
+        // Redirect to the track order page
+        window.location.href = "/trackorder.html";
+
+        // Return false to prevent the default form submission behavior
+        return false;
+    }
+
     </script>
-  </body>
+</body>
 </html>

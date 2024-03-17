@@ -26,6 +26,11 @@ public class CatererService {
         return null;
     }
 
+    public Caterer getCatererByEmail(String email) {
+        // Implement logic to retrieve caterer by email from the repository
+        return catererRepository.findByEmail(email); // Example method from CatererRepository
+    }
+
     public boolean isValidCaterer(String email, String password) {
         Caterer caterer = catererRepository.findByEmail(email);
         return caterer != null && caterer.getPassword().equals(password);

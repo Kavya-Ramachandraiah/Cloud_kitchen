@@ -95,6 +95,11 @@ public class OrderController {
         }
 
         // Redirect to the track order page
-        return "trackOrder";
+        return "redirect:/trackOrder";
+    }
+    
+    @GetMapping("/trackOrder")
+    public String trackOrder() {
+        return "trackorder"; 
     }
 }
