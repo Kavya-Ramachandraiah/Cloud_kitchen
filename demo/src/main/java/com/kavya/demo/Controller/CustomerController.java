@@ -75,6 +75,16 @@ public class CustomerController {
     public String exploreServices() {
         return "customer_service"; // This will redirect to customerservice.html
     }
+   
 
+    @GetMapping("/")
+    public String StartingPage() {
+        return "startingPage"; 
+    }
     
+    @GetMapping("/about")
+    public String AboutPage() {
+        return "about"; 
+    }
+
 }

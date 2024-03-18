@@ -4,49 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track Order</title>
-    <!-- Add any CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .order-details {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .order-details h2 {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .order-details p {
+            margin: 5px 0;
+            color: #777;
+        }
+        
+        .status {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
 </head>
 <body>
-    <h2>Track Order</h2>
-    <div id="orderList">
-        <!-- Orders will be displayed here -->
+    <div class="container">
+        <h1>Track Order</h1>
+        
+        <div class="order-details">
+            <h2>Dish Name: </h2>
+            <p>Delivery Date: </p>
+            <p>Number of People: </p>
+            <p>Caterer: </p>
+            <p>Status: <span class="status"></span></p>
+            <p>Price: $<span class="price"></span></p>
+        </div>
+        
+        <div class="order-details">
+            <h2>Dish Name: </h2>
+            <p>Delivery Date: </p>
+            <p>Number of People: </p>
+            <p>Caterer: </p>
+            <p>Status: <span class="status"></span></p>
+            <p>Price: $<span class="price"></span></p>
+        </div>
     </div>
-
-    <script>
-        // Function to display the latest order
-        function displayLatestOrder() {
-            // Retrieve the latest order from local storage
-            var order = JSON.parse(localStorage.getItem("order"));
-
-            // Get the order list element
-            var orderList = document.getElementById("orderList");
-
-            // Clear existing orders
-            orderList.innerHTML = "";
-
-            // Display the latest order
-            if (order) {
-                var listItem = document.createElement("div");
-                listItem.innerHTML = `
-                    <h3>Order</h3>
-                    <p><strong>Dish Name:</strong> ${order.dishName}</p>
-                    <p><strong>Delivery Date:</strong> ${order.deliveryDate}</p>
-                    <p><strong>Number of People:</strong> ${order.numberOfPeople}</p>
-                    <p><strong>Caterer:</strong> ${order.catererText}</p>
-                    <hr>
-                `;
-                orderList.appendChild(listItem);
-            } 
-            // else {
-            //     // If no order exists, display a message
-            //     orderList.innerHTML = "<p>No order found.</p>";
-            // }
-        }
-
-        // Call the displayLatestOrder function when the page loads
-        window.addEventListener("load", function () {
-            displayLatestOrder();
-        });
-    </script>
 </body>
 </html>

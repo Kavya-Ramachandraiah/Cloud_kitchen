@@ -152,34 +152,34 @@
     }
 }
 
-function submitForm() {
-        // Capture the input values
-        const dishName = document.getElementById("dishNameInput").value;
-        const deliveryDate = document.getElementById("deliveryDate").value;
-        const numberOfPeople = document.getElementById("numberOfPeople").value;
-        const catererId = document.getElementById("caterer").value;
-        const catererText = document.getElementById("caterer").options[document.getElementById("caterer").selectedIndex].text;
+// function submitForm() {
+//         // Capture the input values
+//         const dishName = document.getElementById("dishNameInput").value;
+//         const deliveryDate = document.getElementById("deliveryDate").value;
+//         const numberOfPeople = document.getElementById("numberOfPeople").value;
+//         const catererId = document.getElementById("caterer").value;
+//         const catererText = document.getElementById("caterer").options[document.getElementById("caterer").selectedIndex].text;
 
-        // Create a new order object
-        const order = {
-            dishName: dishName,
-            deliveryDate: deliveryDate,
-            numberOfPeople: numberOfPeople,
-            catererText: catererText
-        };
+//         // Create a new order object
+//         const order = {
+//             dishName: dishName,
+//             deliveryDate: deliveryDate,
+//             numberOfPeople: numberOfPeople,
+//             catererText: catererText
+//         };
 
-        // Clear old order data from local storage
-        localStorage.removeItem("order");
+//         // Clear old order data from local storage
+//         localStorage.removeItem("order");
 
-        // Store the new order in local storage
-        localStorage.setItem("order", JSON.stringify(order));
+//         // Store the new order in local storage
+//         localStorage.setItem("order", JSON.stringify(order));
 
-        // Redirect to the track order page
-        window.location.href = "/trackorder.html";
+//         // Redirect to the track order page
+//         window.location.href = "/trackorder.html";
 
-        // Return false to prevent the default form submission behavior
-        return false;
-    }
+//         // Return false to prevent the default form submission behavior
+//         return false;
+//     }
 
     </script>
 </body>
