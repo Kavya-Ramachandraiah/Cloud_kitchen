@@ -1,243 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:wght@900&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
-  <title>Order Page</title>
-  <style>
-    html {
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      color: #555;
-      background-color: #fdf2e9;
-      scroll-behavior: smooth;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:wght@900&family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Order Page</title>
+    <style>
+      html {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        color: #555;
+        background-color: #fdf2e9;
+        scroll-behavior: smooth;
+      }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      height: 60px;
-      padding: 0 20px;
-    }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height: 60px;
+        padding: 0 20px;
+      }
 
-    .logo {
-      height: 15rem;
-      margin: auto;
-    }
+      .logo {
+        height: 15rem;
+        margin: auto;
+      }
 
-    .header-top {
-      text-align: center;
-      font-size: 30px;
-      font-weight: 600;
-      margin: 20px auto;
-    }
+      .header-top {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+        margin: 20px auto;
+      }
 
-    .container {
-      text-align: center;
-      display: flex;
-      justify-content: space-between;
-      margin: 10px;
-      border: none;
-      margin-top: 5%;
-    }
+      .container {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+        border: none;
+        margin-top: 5%;
+      }
 
-    .input-section {
-      background-color: #fae5ae;
-      text-align: center;
-      margin: 50px auto;
-      width: 500px;
-      border-radius: 11px;
-      padding: 20px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
+      .input-section {
+        background-color: #fae5ae;
+        text-align: center;
+        margin: 50px auto;
+        width: 500px;
+        border-radius: 11px;
+        padding: 20px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
 
-    .input-section input,
-    select,
-    option {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      width: calc(100% - 20px);
-      font-family: "Poppins", sans-serif;
-      color: inherit;
-      border: none;
-    }
+      .input-section input,
+      select,
+      option {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        width: calc(100% - 20px);
+        font-family: "Poppins", sans-serif;
+        color: inherit;
+        border: none;
+      }
 
-    .input-section label {
-      margin-bottom: 50px;
-    }
+      .input-section label {
+        margin-bottom: 50px;
+      }
 
-    .btn {
-      text-decoration: none;
-      font-family: "Poppins", sans-serif;
-      background-color: #595854;
-      color: #fff;
-      cursor: pointer;
-      padding: 5px 10px; /* Adjusted padding */
-      border: none;
-      border-radius: 10px;
-      font-size: 15px;
-      transition: all 0.3s;
-    }
+      .btn {
+        text-decoration: none;
+        font-family: "Poppins", sans-serif;
+        background-color: #595854;
+        color: #fff;
+        cursor: pointer;
+        padding: 5px 10px; /* Adjusted padding */
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: all 0.3s;
+      }
 
-    .custom-delivery-date,
-    .custom-no-of-people {
-      margin-top: 15px; /* Increased margin between sections */
-    }
+      .custom-delivery-date,
+      .custom-no-of-people {
+        margin-top: 15px; /* Increased margin between sections */
+      }
 
-    .list-section {
-      margin-top: -100px;
-      margin: auto;
-      width: 500px; /* Adjusted width */
-      background-color: #ffffff;
-      border: 3px solid #fae5ae;
-      border-radius: 11px;
-      padding: 20px; /* Reduced padding */
-      transition: all 0.3s;
-    }
+      .list-section {
+        margin-top: -100px;
+        margin: auto;
+        width: 500px; /* Adjusted width */
+        background-color: #ffffff;
+        border: 3px solid #fae5ae;
+        border-radius: 11px;
+        padding: 20px; /* Reduced padding */
+        transition: all 0.3s;
+      }
 
-    .list-section ul {
-      list-style: none;
-      font-size: 18px;
-      font-family: "Poppins", sans-serif;
-    }
+      .list-section ul {
+        list-style: none;
+        font-size: 18px;
+        font-family: "Poppins", sans-serif;
+      }
 
-    .custom-page-submit {
-      font-size: 16px;
-      font-family: "Poppins", sans-serif;
-      padding: 10px 20px;
-      margin: 20px auto; /* Adjusted margin */
-      border-radius: 8px;
-      border: none;
-      background-color: #595854;
-      color: #fff;
-      transition: 0.3s;
-    }
+      .custom-page-submit {
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+        padding: 10px 20px;
+        margin: 20px auto; /* Adjusted margin */
+        border-radius: 8px;
+        border: none;
+        background-color: #595854;
+        color: #fff;
+        transition: 0.3s;
+      }
 
-    .error-message {
-      color: red;
-      font-size: 14px;
-      margin-top: 5px;
-    }
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
 
-    .back-button-container {
-      text-align: center;
-      margin: 50px auto;
-    }
+      .back-button-container {
+        text-align: center;
+        margin: 50px auto;
+      }
 
-    .back-button-container a {
-      padding: 10px 20px;
-    }
-  </style>
-</head>
-<body>
-<div class="user-dashboard">
-  <header class="header">
-    <a th:href="@{/about}">
-      <img class="logo" src="img/logo.png" alt="CK logo ">
-    </a>
-  </header>
-</div>
-<h2 class="header-top">Make Order</h2>
-<div class="container">
-  <div class="input-section">
-    <form
-      action="#"
-      th:action="@{/saveOrder}"
-      th:object="${order}"
-      method="post"
-    >
-      <div>
-        <label for="dishName">Dish Name:</label>
-        <input
-          type="text"
-          id="dishNameInput"
-          name="dishName"
-          required
-          oninput="updateDishList()"
-        />
+      .back-button-container a {
+        padding: 10px 20px;
+      }
+      @media (max-width: 1200px) {
+        .container {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 600px) {
+        .input-section {
+          width: 400px;
+        }
+        .list-section {
+          width: 400px;
+        }
+        .header-top {
+          text-align: center;
+        }
+        .btn {
+          margin: auto;
+        }
+      }
+      @media (max-width: 470px) {
+        .input-section {
+          width: 300px;
+        }
+        .list-section {
+          width: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="user-dashboard">
+      <header class="header">
+        <a th:href="@{/about}">
+          <img class="logo" src="img/logo.png" alt="CK logo " />
+        </a>
+      </header>
+    </div>
+    <h2 class="header-top">Make Order</h2>
+    <div class="container">
+      <div class="input-section">
+        <form
+          action="#"
+          th:action="@{/saveOrder}"
+          th:object="${order}"
+          method="post"
+        >
+          <div>
+            <label for="dishName">Dish Name:</label>
+            <input
+              type="text"
+              id="dishNameInput"
+              name="dishName"
+              required
+              oninput="updateDishList()"
+            />
+          </div>
+          <div>
+            <label for="deliveryDate">Delivery Date:</label>
+            <input
+              type="date"
+              id="deliveryDate"
+              name="deliveryDate"
+              required
+              onchange="validateDeliveryDate()"
+            />
+            <div
+              id="dateErrorMessage"
+              class="error-message"
+              style="display: none"
+            ></div>
+          </div>
+          <div>
+            <label for="numberOfPeople">Number of People:</label>
+            <input
+              type="number"
+              id="numberOfPeople"
+              name="numberOfPeople"
+              required
+            />
+          </div>
+          <div>
+            <label for="caterer">Select Caterer:</label>
+            <select id="caterer" name="catererId" required>
+              <option value="">Select Caterer</option>
+              <!-- Iterate over the list of caterers fetched from the backend -->
+              <th:block th:each="caterer : ${catererList}">
+                <!-- Display ID, full name, and specialization -->
+                <option
+                  th:value="${caterer.id}"
+                  th:text="${caterer.id + ' - ' + caterer.fullName + ' (' + caterer.specialization + ')'}"
+                ></option>
+              </th:block>
+            </select>
+          </div>
+          <button class="btn" type="submit">Submit</button>
+        </form>
       </div>
-      <div>
-        <label for="deliveryDate">Delivery Date:</label>
-        <input type="date" id="deliveryDate" name="deliveryDate" required onchange="validateDeliveryDate()" />
-        <div id="dateErrorMessage" class="error-message" style="display: none;"></div>
+
+      <div class="list-section">
+        <h3>Selected Dishes:</h3>
+        <ul id="dishList"></ul>
       </div>
-      <div>
-        <label for="numberOfPeople">Number of People:</label>
-        <input
-          type="number"
-          id="numberOfPeople"
-          name="numberOfPeople"
-          required
-        />
-      </div>
-      <div>
-        <label for="caterer">Select Caterer:</label>
-        <select id="caterer" name="catererId" required>
-          <option value="">Select Caterer</option>
-          <!-- Iterate over the list of caterers fetched from the backend -->
-          <th:block th:each="caterer : ${catererList}">
-            <!-- Display ID, full name, and specialization -->
-            <option
-              th:value="${caterer.id}"
-              th:text="${caterer.id + ' - ' + caterer.fullName + ' (' + caterer.specialization + ')'}"
-            ></option>
-          </th:block>
-        </select>
-      </div>
-      <button class="btn" type="submit">Submit</button>
-    </form>
-  </div>
+    </div>
+    <div class="back-button-container">
+      <a th:href="@{/customer_welcome}" class="btn">Back to Home Page</a>
+    </div>
 
-  <div class="list-section">
-    <h3>Selected Dishes:</h3>
-    <ul id="dishList"></ul>
-  </div>
-</div>
-<div class="back-button-container">
-  <a th:href="@{/customer_welcome}" class="btn">Back to Home Page</a>
-</div>
+    <script>
+      function updateDishList() {
+        var dishInput = document.getElementById("dishNameInput");
+        var dishList = document.getElementById("dishList");
+        // Clear existing list
+        dishList.innerHTML = "";
+        // Split input value by comma and iterate through each dish
+        var dishes = dishInput.value.split(",");
+        for (var i = 0; i < dishes.length; i++) {
+          // Create list item for each dish and append to the list
+          var listItem = document.createElement("li");
+          listItem.textContent = dishes[i].trim(); // Trim whitespace
+          dishList.appendChild(listItem);
+        }
+      }
 
-<script>
-  function updateDishList() {
-    var dishInput = document.getElementById("dishNameInput");
-    var dishList = document.getElementById("dishList");
-    // Clear existing list
-    dishList.innerHTML = "";
-    // Split input value by comma and iterate through each dish
-    var dishes = dishInput.value.split(",");
-    for (var i = 0; i < dishes.length; i++) {
-      // Create list item for each dish and append to the list
-      var listItem = document.createElement("li");
-      listItem.textContent = dishes[i].trim(); // Trim whitespace
-      dishList.appendChild(listItem);
-    }
-  }
+      function validateDeliveryDate() {
+        var deliveryDateInput = document.getElementById("deliveryDate");
+        var selectedDate = new Date(deliveryDateInput.value);
+        var today = new Date();
 
-  function validateDeliveryDate() {
-    var deliveryDateInput = document.getElementById("deliveryDate");
-    var selectedDate = new Date(deliveryDateInput.value);
-    var today = new Date();
-
-    if (selectedDate < today) {
-      // Show error message
-      var errorMessage = document.getElementById("dateErrorMessage");
-      errorMessage.textContent = "Invalid date. Please select a date equal to or later than today.";
-      errorMessage.style.display = "block";
-      deliveryDateInput.setCustomValidity("Invalid date");
-    } else {
-      // Hide error message
-      var errorMessage = document.getElementById("dateErrorMessage");
-      errorMessage.style.display = "none";
-      deliveryDateInput.setCustomValidity("");
-    }
-  }
-</script>
-</body>
+        if (selectedDate < today) {
+          // Show error message
+          var errorMessage = document.getElementById("dateErrorMessage");
+          errorMessage.textContent =
+            "Invalid date. Please select a date equal to or later than today.";
+          errorMessage.style.display = "block";
+          deliveryDateInput.setCustomValidity("Invalid date");
+        } else {
+          // Hide error message
+          var errorMessage = document.getElementById("dateErrorMessage");
+          errorMessage.style.display = "none";
+          deliveryDateInput.setCustomValidity("");
+        }
+      }
+    </script>
+  </body>
 </html>
