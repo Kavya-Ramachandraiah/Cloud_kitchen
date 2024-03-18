@@ -17,6 +17,19 @@
         margin: auto;
         overflow: hidden;
       }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height: 60px;
+        padding: 0 20px;
+      }
+
+      .logo {
+        height: 15rem;
+        margin: auto;
+      }
       .main-header {
         background-color: #333;
         color: #fff;
@@ -74,6 +87,13 @@
     </style>
   </head>
   <body>
+    <div class="user-dashboard">
+      <header class="header">
+        <a th:href="@{/about}">
+          <img class="logo" src="/img/logo.png" alt="CK logo "
+        /></a>
+      </header>
+    </div>
     <header class="main-header">
       <h1>Project and Team Overview</h1>
     </header>
