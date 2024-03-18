@@ -56,7 +56,7 @@ public class CustomerController {
             // session.setAttribute("customerId", customer.getId());
             session.setAttribute("token", customer.getToken());
             // Redirect to the home page or any other page
-            return "customer_welcome";
+            return "redirect:/customer_welcome";
         } else {
             String loginFailed = "Invalid credentials";
             model.addAttribute("errorMessage", loginFailed);
@@ -67,7 +67,7 @@ public class CustomerController {
     @GetMapping("/customer_welcome")
     public String customer_welcome(HttpSession session) {
         // Invalidate session and logout
-        session.invalidate();
+        // session.invalidate();
         return "customer_welcome";
     }
 

@@ -73,7 +73,7 @@
 
       .btn {
         padding: 10px 20px; /* Adjust padding as needed */
-        text-decoration: none; /* Removes underline from links */
+        text-decoration: none !important; /* Removes underline from links */
         color: white; /* Text color */
         background-color: #007bff; /* Background color */
         border: none;
@@ -91,7 +91,7 @@
     <div class="user-dashboard">
       <header class="header">
         <a th:href="@{/about}">
-          <img class="logo" src="../static/img/logo.png" alt="CK logo "
+          <img class="logo" src="/img/logo.png" alt="CK logo "
         /></a>
       </header>
     </div>
@@ -117,7 +117,7 @@
       </div>
     </div>
     <div class="back-button-container">
-      <a th:href="@{/}" class="btn">Back</a>
+      <a th:href="@{/customer_welcome}" class="btn">Back</a>
     </div>
   </body>
 </html>
