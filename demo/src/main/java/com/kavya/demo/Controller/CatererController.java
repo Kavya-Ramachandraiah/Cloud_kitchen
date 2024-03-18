@@ -66,6 +66,18 @@ public class CatererController {
         }
     }
 
+    @GetMapping("/catererOrderStatus")
+    public String showOrderStatusPage() {
+        return "caterer_orderstatus";
+    }
+
+    @GetMapping("/catererPaymentStatus")
+    public String showPaymentStatusPage() {
+        return "caterer_paymentstatus";
+    }
+
+
+
     // Add more methods as needed
 
 }
