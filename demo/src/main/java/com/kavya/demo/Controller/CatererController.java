@@ -19,15 +19,15 @@ public class CatererController {
     public String createCaterer(@ModelAttribute("caterer") Caterer caterer, Model model) {
         // Create the caterer using the service method
         catererService.createCaterer(caterer);
-        
+
         // Add success message
         String registrationSuccessMessage = "Caterer registration successful. Please login.";
         model.addAttribute("successMessage", registrationSuccessMessage);
-        
+
         // Redirect to the login page
         return "caterer_login";
     }
-    
+
     @GetMapping("/catererSignup")
     public String showCatererSignupForm(Model model) {
         model.addAttribute("caterer", new Caterer());
@@ -44,12 +44,19 @@ public class CatererController {
         return "caterer_welcome";
     }
 
+    @GetMapping("/catererLogout")
+    public String logout(HttpSession session) {
+        // Invalidate session and logout
+        session.invalidate();
+        return "redirect:/catererLogin";
+    }
+
     @PostMapping("/catererLogin")
     public String login(@RequestParam String email, @RequestParam String password, HttpSession session, Model model) {
         if (catererService.isValidCaterer(email, password)) {
             // Generate and store token in session
             String token = catererService.generateToken(email);
-            session.setAttribute("userId", email);
+            session.setAttribute("catererEmail", email);
             session.setAttribute("token", token);
             return "caterer_welcome";
         } else {

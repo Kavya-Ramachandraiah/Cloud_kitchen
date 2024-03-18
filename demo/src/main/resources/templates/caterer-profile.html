@@ -1,19 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caterer Profile</title>
-    <!-- Add any additional CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .profile-container {
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .profile-details {
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .profile-details p {
+            margin: 10px 0;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .logout-btn {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Caterer Profile</h1>
-    <div>
-        <p th:text="${caterer.email}"><strong>Email:</strong></p>
-        <p><strong>Full Name:</strong> [[${caterer.fullName}]]</p>
-        <p><strong>Phone Number:</strong> [[${caterer.phoneNumber}]]</p>
-        <p><strong>Address:</strong> [[${caterer.address}]]</p>
-        <!-- Add more details as needed -->
+    <div class="profile-container">
+        <h1>Caterer Profile</h1>
+        <div class="profile-details">
+            <p><strong>Email:</strong> [[${caterer.email}]]</p>
+            <p><strong>Full Name:</strong> [[${caterer.fullName}]]</p>
+            <p><strong>Phone Number:</strong> [[${caterer.phoneNumber}]]</p>
+            <p><strong>Address:</strong> [[${caterer.address}]]</p>
+            <!-- Add more details as needed -->
+        </div>
+        <div class="btn-container">
+            <button class="btn" onclick="window.location.href='/update-profile'">Update Profile</button>
+        </div>
+    </div>
+    <div class="logout-btn">
+        <button class="btn"><a th:href="@{/logout}" class="btn">Logout</a></button>
     </div>
 </body>
 </html>

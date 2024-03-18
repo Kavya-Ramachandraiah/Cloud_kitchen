@@ -106,8 +106,8 @@
             />
         </div>
         <div class="form-group">
-            <label for="phoneNumber" class="label-text">Phone Number:</label>
-            <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone Number" required />
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone Number" required pattern="\d{10}" title="Phone number must be exactly 10 digits long"/>
         </div>
         <div class="form-group">
             <label for="address">Address:</label>
@@ -140,6 +140,7 @@
                     th:field="*{password}"
                     placeholder="Password"
                     required
+                    minlength="5"
             />
         </div>
         <div class="form-group">

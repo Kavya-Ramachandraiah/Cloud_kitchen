@@ -63,6 +63,8 @@
             padding: 12px;
             width: 100%;
             font-size: 16px;
+            color: #333; /* Added text color */
+            background-color: #fff; /* Added background color */
         }
 
         .form-group select {
@@ -100,6 +102,16 @@
             margin-top: 20px; /* Adjusted margin */
             font-size: 14px; /* Adjusted font size */
         }
+
+        /* Added styles for eye icon */
+        .input-group-append {
+            cursor: pointer;
+        }
+
+        .input-group-text {
+            background-color: transparent;
+            border: none;
+        }
     </style>
     <script th:inline="javascript"
             src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -127,6 +139,16 @@
                 // }
             );
         }
+
+        // Function to toggle password visibility
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
     </script>
 </head>
 <body>
@@ -142,8 +164,8 @@
         </div>
         <div class="form-group">
             <label for="phoneNumber" class="label-text">Phone Number:</label>
-            <input type="text" class="form-control" id="phonenumber" th:field="*{phoneNumber}"
-                   placeholder="Phone Number" required/>
+            <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}"
+                   placeholder="Phone Number" required pattern="\d{10}" title="Phone number must be exactly 10 digits long"/>
         </div>
         <div class="form-group">
             <label for="address" class="label-text">Address:</label>
@@ -154,14 +176,17 @@
             <label for="email" class="label-text">Email:</label>
             <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email" required/>
         </div>
-        <!-- <div class="form-group">
-            <label for="username" class="label-text">Username:</label>
-            <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="Username" required />
-        </div> -->
         <div class="form-group">
             <label for="password" class="label-text">Password:</label>
-            <input type="password" class="form-control" id="password" th:field="*{password}"
-                   placeholder="Password" required/>
+            <div class="input-group">
+                <input type="password" class="form-control" id="password" th:field="*{password}"
+                       placeholder="Password" required minlength="5"/>
+                <div class="input-group-append" onclick="togglePasswordVisibility()">
+                    <span class="input-group-text">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary btn-block" onclick="sendthemail()">Sign Up</button>
@@ -179,5 +204,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome -->
 </body>
 </html>

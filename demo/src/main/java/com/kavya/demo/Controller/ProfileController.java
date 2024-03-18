@@ -48,19 +48,21 @@ public class ProfileController {
     @GetMapping("/caterer/profile")
     public String viewCatererProfile(HttpSession session, Model model) {
         // Check if the user is logged in
-        String userEmail = (String) session.getAttribute("userEmail");
-        // if (userEmail == null) {
+        String catererEmail = (String) session.getAttribute("catererEmail");
+        System.out.println(catererEmail);
+        // if (catererEmail == null) {
         //     // Redirect to login if not logged in
         //     return "redirect:/login";
         // }
     
         // Retrieve the caterer from the database based on the email
-        Caterer caterer = catererService.getCatererByEmail(userEmail);
-        // if (caterer == null) {
-        //     // Handle scenario if caterer not found
-        //     // You can redirect to login with an error message
-        //     return "redirect:/login";
-        // }
+        Caterer caterer = catererService.getCatererByEmail(catererEmail);
+        System.out.println(caterer);
+        if (caterer == null) {
+            // Handle scenario if caterer not found
+            // You can redirect to login with an error message
+            return "redirect:/login";
+        }
     
         // Add the caterer details to the model
         model.addAttribute("caterer", caterer);
