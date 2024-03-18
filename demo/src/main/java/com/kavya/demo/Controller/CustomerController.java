@@ -64,6 +64,13 @@ public class CustomerController {
         }
     }
 
+    @GetMapping("/customer_welcome")
+    public String customer_welcome(HttpSession session) {
+        // Invalidate session and logout
+        session.invalidate();
+        return "customer_welcome";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         // Invalidate session and logout
