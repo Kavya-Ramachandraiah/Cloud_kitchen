@@ -64,6 +64,27 @@
         font-weight: bold;
         color: #28a745;
       }
+      .back-button-container {
+        display: flex;
+        justify-content: center;
+        margin: 25px; /* Adjust margin as needed */
+        /* margin-bottom: 25px; */
+      }
+
+      .btn {
+        padding: 10px 20px; /* Adjust padding as needed */
+        text-decoration: none; /* Removes underline from links */
+        color: white; /* Text color */
+        background-color: #007bff; /* Background color */
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      .btn:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+        cursor: pointer; /* Changes cursor to a pointer */
+      }
     </style>
   </head>
   <body>
@@ -94,6 +115,9 @@
         <p>Status: <span class="status"></span></p>
         <p>Price: $<span class="price"></span></p>
       </div>
+    </div>
+    <div class="back-button-container">
+      <a th:href="@{/}" class="btn">Back</a>
     </div>
   </body>
 </html>
