@@ -1,80 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Track Order</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .order-details {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .order-details h2 {
-            margin-bottom: 10px;
-            color: #555;
-        }
-        
-        .order-details p {
-            margin: 5px 0;
-            color: #777;
-        }
-        
-        .status {
-            font-weight: bold;
-            color: #0d6efd;
-        }
-        
-        .price {
-            font-weight: bold;
-            color: #28a745;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height: 60px;
+        padding: 0 20px;
+      }
+
+      .logo {
+        height: 15rem;
+        margin: auto;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .order-details {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+
+      .order-details h2 {
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      .order-details p {
+        margin: 5px 0;
+        color: #777;
+      }
+
+      .status {
+        font-weight: bold;
+        color: #0d6efd;
+      }
+
+      .price {
+        font-weight: bold;
+        color: #28a745;
+      }
+      .back-button-container {
+        display: flex;
+        justify-content: center;
+        margin: 25px; /* Adjust margin as needed */
+        /* margin-bottom: 25px; */
+      }
+
+      .btn {
+        padding: 10px 20px; /* Adjust padding as needed */
+        text-decoration: none; /* Removes underline from links */
+        color: white; /* Text color */
+        background-color: #007bff; /* Background color */
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      .btn:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+        cursor: pointer; /* Changes cursor to a pointer */
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Track Order</h1>
-        
-        <div class="order-details">
-            <h2>Dish Name: </h2>
-            <p>Delivery Date: </p>
-            <p>Number of People: </p>
-            <p>Caterer: </p>
-            <p>Status: <span class="status"></span></p>
-            <p>Price: $<span class="price"></span></p>
-        </div>
-        
-        <div class="order-details">
-            <h2>Dish Name: </h2>
-            <p>Delivery Date: </p>
-            <p>Number of People: </p>
-            <p>Caterer: </p>
-            <p>Status: <span class="status"></span></p>
-            <p>Price: $<span class="price"></span></p>
-        </div>
+  </head>
+  <body>
+    <div class="user-dashboard">
+      <header class="header">
+        <a th:href="@{/about}">
+          <img class="logo" src="../static/img/logo.png" alt="CK logo "
+        /></a>
+      </header>
     </div>
-</body>
+    <div class="container">
+      <h1>Track Order</h1>
+
+      <div class="order-details">
+        <h2>Dish Name:</h2>
+        <p>Delivery Date:</p>
+        <p>Number of People:</p>
+        <p>Caterer:</p>
+        <p>Status: <span class="status"></span></p>
+        <p>Price: $<span class="price"></span></p>
+      </div>
+
+      <div class="order-details">
+        <h2>Dish Name:</h2>
+        <p>Delivery Date:</p>
+        <p>Number of People:</p>
+        <p>Caterer:</p>
+        <p>Status: <span class="status"></span></p>
+        <p>Price: $<span class="price"></span></p>
+      </div>
+    </div>
+    <div class="back-button-container">
+      <a th:href="@{/}" class="btn">Back</a>
+    </div>
+  </body>
 </html>

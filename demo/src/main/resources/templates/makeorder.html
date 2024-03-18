@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:wght@900&family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Order Page</title>
     <style>
-        html {
-            font-family: "poppins", sans-serif;
-            font-weight: 400;
-            color: #555;
-            background-color: #fdf2e9;
-            scroll-behavior: smooth;
-        }
+      html {
+        font-family: "poppins", sans-serif;
+        font-weight: 400;
+        color: #555;
+        background-color: #fdf2e9;
+        scroll-behavior: smooth;
+      }
 
-        .header-top {
-            text-align: center;
-            font-size: 30px;
-            font-weight: 600px;
-            margin: 50px auto;
-        }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height: 60px;
+        padding: 0 20px;
+      }
+
+      .logo {
+        height: 15rem;
+        margin: auto;
+      }
+      .header-top {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600px;
+        margin: 20px auto;
+      }
 
         .container {
             text-align: center;
@@ -56,80 +75,131 @@
             margin-bottom: 50px;
         }
 
-        .btn {
-            font-family: "poppins", sans-serif;
-            background-color: #595854;
-            color: #fff;
-            cursor: pointer;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
+      .btn {
+        font-family: "poppins", sans-serif;
+        background-color: #595854;
+        color: #fff;
+        cursor: pointer;
+        padding: 5px 10px; /* Adjusted padding */
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: all 0.3s;
+      }
+      .custom-delivery-date,
+      .custom-no-of-people {
+        margin-top: 15px; /* Increased margin between sections */
+      }
+      .list-section {
+        margin-top: -100px;
+        margin: auto;
+        width: 500px; /* Adjusted width */
+        background-color: #ffffff;
+        border: 3px solid #fae5ae;
+        border-radius: 11px;
+        padding: 20px; /* Reduced padding */
+        transition: all 0.3s;
+      }
+      .list-section ul {
+        list-style: none;
+        font-size: 18px;
+        font-family: "poppins", sans-serif;
+      }
+      .custom-page-submit {
+        font-size: 16px;
+        font-family: "poppins", sans-serif;
+        padding: 10px 20px;
+        margin: 20px auto; /* Adjusted margin */
+        border-radius: 8px;
+        border: none;
+        background-color: #595854;
+        color: #fff;
+        transition: 0.3s;
+      }
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
 
-        .list-section {
-            margin-top: -100px;
-            margin: auto;
-            width: 500px;
-            background-color: #ffffff;
-            border: 3px solid #fae5ae;
-            border-radius: 11px;
-            padding: 20px;
-            transition: all 0.3s;
-        }
-
-        .error-message {
-            color: red;
-            font-size: 14px;
-            margin-top: 5px;
-            display: none; /* Initially hidden */
-        }
+      .back-button-container {
+        text-align: center;
+        margin: 50px auto;
+      }
+      .back-button-container a {
+        padding: 10px 20px;
+      }
     </style>
-</head>
-<body>
-<h2 class="header-top">Make Order</h2>
-<div class="container">
-    <div class="input-section">
-        <form id="orderForm" action="#" th:action="@{/saveOrder}" th:object="${order}" method="post" onsubmit="return validateForm()">
-            <div>
-                <label for="dishName">Dish Name:</label>
-                <input type="text" id="dishNameInput" name="dishName" required oninput="updateDishList()" />
-            </div>
-            <div>
-                <label for="deliveryDate">Delivery Date:</label>
-                <input type="date" id="deliveryDate" name="deliveryDate" required />
-                <p class="error-message" id="dateErrorMessage">Delivery date cannot be in the past</p>
-            </div>
-            <div>
-                <label for="numberOfPeople">Number of People:</label>
-                <input type="number" id="numberOfPeople" name="numberOfPeople" required />
-            </div>
-            <div>
-                <label for="caterer">Select Caterer:</label>
-                <select id="caterer" name="catererId" required>
-                    <option value="">Select Caterer</option>
-                    <!-- Iterate over the list of caterers fetched from the backend -->
-                    <th:block th:each="caterer : ${catererList}">
-                        <!-- Display ID, full name, and specialization -->
-                        <option th:value="${caterer.id}"
-                                th:text="${caterer.id + ' - ' + caterer.fullName + ' (' + caterer.specialization + ')'}">
-                        </option>
-                    </th:block>
-                </select>
-            </div>
-            <button class="btn" type="submit">Submit</button>
-        </form>
+  </head>
+  <body>
+    <div class="user-dashboard">
+      <header class="header">
+        <a th:href="@{/about}">
+          <img class="logo" src="../static/img/logo.png" alt="CK logo "
+        /></a>
+      </header>
     </div>
+    <h2 class="header-top">Make Order</h2>
+    <div class="container">
+      <div class="input-section">
+        <form
+          action="#"
+          th:action="@{/saveOrder}"
+          th:object="${order}"
+          method="post"
+        >
+          <div>
+            <label for="dishName">Dish Name:</label>
+            <input
+              type="text"
+              id="dishNameInput"
+              name="dishName"
+              required
+              oninput="updateDishList()"
+            />
+          </div>
+          <div>
+            <label for="deliveryDate">Delivery Date:</label>
+            <input type="date" id="deliveryDate" name="deliveryDate" required />
+          </div>
+          <div>
+            <label for="numberOfPeople">Number of People:</label>
+            <input
+              type="number"
+              id="numberOfPeople"
+              name="numberOfPeople"
+              required
+            />
+          </div>
+          <div>
+            <label for="caterer">Select Caterer:</label>
+            <select id="caterer" name="catererId" required>
+              <option value="">Select Caterer</option>
+              <!-- Iterate over the list of caterers fetched from the backend -->
+              <th:block th:each="caterer : ${catererList}">
+                <!-- Display ID, full name, and specialization -->
+                <option
+                  th:value="${caterer.id}"
+                  th:text="${caterer.id + ' - ' + caterer.fullName + ' (' + caterer.specialization + ')'}"
+                ></option>
+              </th:block>
+            </select>
+          </div>
+          <button class="btn" type="submit">Submit</button>
+        </form>
+      </div>
 
-    <div class="list-section">
+      <div class="list-section">
         <h3>Selected Dishes:</h3>
         <ul id="dishList"></ul>
+      </div>
     </div>
-</div>
+    <div class="back-button-container">
+      <a th:href="@{/}" class="btn">Back</a>
+    </div>
 
-<script>
-    function updateDishList() {
+    <script>
+      function updateDishList() {
         var dishInput = document.getElementById("dishNameInput");
         var dishList = document.getElementById("dishList");
         // Clear existing list
@@ -137,24 +207,41 @@
         // Split input value by comma and iterate through each dish
         var dishes = dishInput.value.split(",");
         for (var i = 0; i < dishes.length; i++) {
-            // Create list item for each dish and append to the list
-            var listItem = document.createElement("li");
-            listItem.textContent = dishes[i].trim(); // Trim whitespace
-            dishList.appendChild(listItem);
+          // Create list item for each dish and append to the list
+          var listItem = document.createElement("li");
+          listItem.textContent = dishes[i].trim(); // Trim whitespace
+          dishList.appendChild(listItem);
         }
-    }
+      }
 
-    function validateForm() {
-        var deliveryDate = document.getElementById("deliveryDate").value;
-        var currentDate = new Date().toISOString().split('T')[0];
+      // function submitForm() {
+      //         // Capture the input values
+      //         const dishName = document.getElementById("dishNameInput").value;
+      //         const deliveryDate = document.getElementById("deliveryDate").value;
+      //         const numberOfPeople = document.getElementById("numberOfPeople").value;
+      //         const catererId = document.getElementById("caterer").value;
+      //         const catererText = document.getElementById("caterer").options[document.getElementById("caterer").selectedIndex].text;
 
-        if (deliveryDate < currentDate) {
-            document.getElementById("dateErrorMessage").style.display = "block";
-            return false; // Prevent form submission
-        } else {
-            return true; // Allow form submission
-        }
-    }
-</script>
-</body>
+      //         // Create a new order object
+      //         const order = {
+      //             dishName: dishName,
+      //             deliveryDate: deliveryDate,
+      //             numberOfPeople: numberOfPeople,
+      //             catererText: catererText
+      //         };
+
+      //         // Clear old order data from local storage
+      //         localStorage.removeItem("order");
+
+      //         // Store the new order in local storage
+      //         localStorage.setItem("order", JSON.stringify(order));
+
+      //         // Redirect to the track order page
+      //         window.location.href = "/trackorder.html";
+
+      //         // Return false to prevent the default form submission behavior
+      //         return false;
+      //     }
+    </script>
+  </body>
 </html>
