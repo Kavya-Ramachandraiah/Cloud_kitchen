@@ -1,74 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Payment Status</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Payment Status</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #424242;
+        background-color: #fafafa;
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23007BFF" fill-opacity="1" d="M0,64L48,74.7C96,85,192,107,288,112C384,117,480,107,576,117.3C672,128,768,160,864,165.3C960,171,1056,149,1152,138.7C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
+        background-size: cover;
+        background-position: center;
+      }
 
-    h2 {
-      text-align: center;
-    }
+      .container {
+        width: calc(100% - 90px);
+        max-width: 500px;
+        background: #ffffff;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 40px;
+        text-align: center;
+      }
 
-    .status {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 24px;
-    }
+      h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 24px;
+        font-weight: 700;
+      }
 
-    .success {
-      color: green;
-    }
+      .status {
+        font-size: 20px;
+        margin: 20px 0;
+        padding: 12px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
 
-    .failure {
-      color: red;
-    }
+      .success {
+        color: #388e3c;
+        border-color: #c8e6c9;
+      }
 
-    .button-container {
-      text-align: center;
-      margin-top: 30px;
-    }
+      .failure {
+        color: #d32f2f;
+        border-color: #ffcdd2;
+      }
 
-    .button {
-      padding: 10px 20px;
-      background-color: #4caf50;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      text-decoration: none;
-    }
+      .button-container a.button {
+        font-size: 16px;
+        padding: 12px 24px;
+        color: #fff;
+        background-color: #5e35b1;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: transform 0.2s ease-out, background-color 0.3s;
+      }
 
-    .button:hover {
-      background-color: #45a049;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Order Payment Status</h2>
-    <div class="status">
-      <p class="success">Payment Successful!</p>
-      <!-- Change the class to "failure" for unsuccessful payment -->
-      <!-- <p class="failure">Payment Unsuccessful</p> -->
+      .button-container a.button:hover {
+        transform: translateY(-3px);
+        background-color: #4527a0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Order Payment Status</h2>
+      <div class="status">
+        <p class="success">Payment Successful!</p>
+        <!-- Change the class to "failure" for unsuccessful payment -->
+        <!-- <p class="failure">Payment Unsuccessful</p> -->
+      </div>
+      <div class="button-container">
+        <a href="/catererWelcome" class="button">Back to Home Page</a>
+      </div>
     </div>
-    <div class="button-container">
-      <a href="/catererWelcome" class="button">Back to Home Page</a>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
