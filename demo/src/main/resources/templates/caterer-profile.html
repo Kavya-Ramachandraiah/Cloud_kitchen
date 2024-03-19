@@ -1,79 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Caterer Profile</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .profile-container {
-            text-align: center;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            max-width: 400px;
-            width: 100%;
-        }
-        h1 {
-            margin-bottom: 20px;
-        }
-        .profile-details {
-            margin-bottom: 20px;
-            text-align: left;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .profile-details p {
-            margin: 10px 0;
-        }
-        .btn-container {
-            display: flex;
-            justify-content: center;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            margin-right: 10px;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-        .logout-btn {
-            margin-top: 20px;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #e0f7fa;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23048ba8' fill-opacity='1' d='M0,128L48,144C96,160,192,192,288,181.3C384,171,480,117,576,117.3C672,117,768,171,864,176C960,181,1056,139,1152,128C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .profile-container {
+        text-align: center;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 400px;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .profile-details {
+        margin-bottom: 20px;
+        text-align: left;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+      .profile-details p {
+        margin: 10px 0;
+      }
+      .btn-container {
+        display: flex;
+        justify-content: center;
+      }
+      .btn,
+      .logout-btn a {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-right: 10px;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover,
+      .logout-btn a:hover {
+        background-color: #0056b3;
+      }
+      .logout-btn {
+        margin-top: 20px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="profile-container">
-        <h1>Caterer Profile</h1>
-        <div class="profile-details">
-            <p><strong>Email:</strong> [[${caterer.email}]]</p>
-            <p><strong>Full Name:</strong> [[${caterer.fullName}]]</p>
-            <p><strong>Phone Number:</strong> [[${caterer.phoneNumber}]]</p>
-            <p><strong>Address:</strong> [[${caterer.address}]]</p>
-            <!-- Add more details as needed -->
-        </div>
-        <div class="btn-container">
-            <button class="btn" onclick="window.location.href='/update-profile'">Update Profile</button>
-        </div>
+      <h1>Caterer Profile</h1>
+      <div class="profile-details">
+        <p><strong>Email:</strong> [[${caterer.email}]]</p>
+        <p><strong>Full Name:</strong> [[${caterer.fullName}]]</p>
+        <p><strong>Phone Number:</strong> [[${caterer.phoneNumber}]]</p>
+        <p><strong>Address:</strong> [[${caterer.address}]]</p>
+        <!-- Add more details as needed -->
+      </div>
+      <div class="btn-container">
+        <button class="btn" onclick="window.location.href='/update-profile'">
+          Update Profile
+        </button>
+      </div>
     </div>
     <div class="logout-btn">
-        <button class="btn"><a th:href="@{/logout}" class="btn">Logout</a></button>
+      <button class="btn">
+        <a th:href="@{/logout}" class="btn">Logout</a>
+      </button>
     </div>
-</body>
+  </body>
 </html>
