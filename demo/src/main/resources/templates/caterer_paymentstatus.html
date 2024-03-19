@@ -32,6 +32,26 @@
         text-align: center;
       }
 
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Adjusted to align items to the start */
+        position: relative;
+        height: 60px;
+        padding: 0 20px;
+      }
+
+      .logo {
+        height: 15rem;
+        position: absolute; /* Changed to absolute */
+        left: -14rem; /* Align to the left */
+        top: -190px; /* Align to the top */
+        transform: translate(
+          -150px,
+          -150px
+        ); /* Adjust based on your exact needs */
+      }
+
       h2 {
         color: #333;
         font-size: 24px;
@@ -76,6 +96,13 @@
     </style>
   </head>
   <body>
+    <div class="user-dashboard">
+      <header class="header">
+        <a th:href="@{/about}">
+          <img class="logo" src="/img/logo.png" alt="CK logo "
+        /></a>
+      </header>
+    </div>
     <div class="container">
       <h2>Order Payment Status</h2>
       <div class="status">
