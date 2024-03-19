@@ -95,6 +95,11 @@
       .logout-btn {
         margin-top: 20px;
       }
+
+      .back-button-container {
+        text-align: center;
+        margin-top: 30px;
+      }
     </style>
   </head>
   <body>
@@ -124,6 +129,10 @@
       <button class="btn">
         <a th:href="@{/logout}" class="btn">Logout</a>
       </button>
+    </div>
+
+    <div class="back-button-container">
+      <a th:href="@{/catererWelcome}" class="btn">Back to Home Page</a>
     </div>
   </body>
 </html>
